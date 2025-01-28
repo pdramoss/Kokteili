@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "04B14E4B-691C-480A-9747-B0E73C76C024",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Kokteili.xcodeproj",
+      "identifier" : "E5DB61252D45E4B100C49900",
+      "name" : "Kokteili"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:Kokteili.xcodeproj",
+        "identifier" : "E5DB61382D45E4B300C49900",
+        "name" : "KokteiliTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Kokteili.xcodeproj",
+        "identifier" : "E5DB61422D45E4B300C49900",
+        "name" : "KokteiliUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
