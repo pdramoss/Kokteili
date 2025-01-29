@@ -56,9 +56,36 @@
 		E5DB615A2D45E76600C49900 /* KokteiliWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KokteiliWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E597899B2D49E284006ADE4A /* Exceptions for "Kokteili" folder in "KokteiliWatch Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Networking/Entity/EntityAlcoholic.swift,
+				Networking/Entity/EntityCategory.swift,
+				Networking/Entity/EntityCocktail.swift,
+				Networking/Entity/EntityDrink.swift,
+				Networking/Entity/EntityGlass.swift,
+				Networking/Entity/EntityIngredient.swift,
+				Networking/Error/ErrorNetworking.swift,
+				Networking/Manager/DefaultNetworkManagerProtocol.swift,
+				Networking/Methods/List/API/NetworkingListAPI.swift,
+				Networking/Methods/List/Managers/NetworkingListAdapter.swift,
+				Networking/Methods/List/Managers/NetworkingListService.swift,
+				Networking/Methods/List/Protocols/NetworkingListAdapterProtocol.swift,
+				Networking/Service/EndPointType.swift,
+				Networking/Service/HTTPMethod.swift,
+				Networking/Service/NetworkingRouter.swift,
+			);
+			target = E5DB61592D45E76600C49900 /* KokteiliWatch Watch App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E5DB61282D45E4B100C49900 /* Kokteili */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E597899B2D49E284006ADE4A /* Exceptions for "Kokteili" folder in "KokteiliWatch Watch App" target */,
+			);
 			path = Kokteili;
 			sourceTree = "<group>";
 		};
