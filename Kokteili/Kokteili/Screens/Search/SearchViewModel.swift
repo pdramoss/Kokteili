@@ -8,32 +8,34 @@
 import Foundation
 import SwiftUI
 
-class SearchViewModel: ObservableObject {
+struct CocktailItem: Equatable, Identifiable {
+    var id: String
+    var name: String
+}
+
+class SearchViewModel: BaseViewModel {
     private var networking: NetworkingSearchAdapterProtocol?
-    @Published var cocktailsID: [String] = [String]()
-    @Published var error: String = String()
-    @Published var count: Int = .zero
+    @Published var cocktails: [CocktailItem] = [CocktailItem]()
     
     init(networking: NetworkingSearchAdapterProtocol? = NetworkingSearchAdapter()) {
         self.networking = networking
     }
     
-    func getListBy(_ name: String) {
-        self.networking?.searchBy(name: name, completion: { response in
+    func getListBy(_ name: String) async throws {
+        self.loadingState = .loading
+        self.networking?.searchBy(name: name, completion: { [weak self] response in
             switch response {
             case let .success(entities):
-                self.updateList(entities: entities)
+                self?.updateList(entities: entities)
+                self?.loadingState = .success
             case let .failure(error):
-                self.error = error.localizedDescription
+                self?.loadingState = .failed(error)
             }
         })
     }
     
     private func updateList(entities: [EntityCocktail]) {
-        let ids = entities.map { $0.idDrink }
-        DispatchQueue.main.async {
-            self.cocktailsID = ids
-            self.count = ids.count
-        }
+        let cocktails = entities.map { CocktailItem(id: $0.idDrink, name: $0.strDrink) }
+        self.cocktails = cocktails
     }
 }
