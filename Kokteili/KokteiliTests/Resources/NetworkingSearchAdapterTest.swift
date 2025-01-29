@@ -42,6 +42,24 @@ class NetworkingSearchAdapterTest: XCTestCase {
         XCTAssertEqual(actualInfo?.first?.strDrink, "Margarita")
     }
     
+    func test_success_Data_NotExist() {
+        // Given
+        let exp = expectation(description: "Post request completed")
+        var postResult: Result<[EntityCocktail], Error>!
+        self.setupNetworking(code: 200)
+        
+        // When
+        sut.searchBy(name: "Quino") { (result) in
+            postResult = result
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 5.0, handler: nil)
+        let actualInfo = try? postResult.get()
+        
+        // Then
+        XCTAssertNil(actualInfo)
+    }
+    
     private func setupNetworking(file: String = String(), code: Int, error: Error? = nil) {
         let router = MockRouter.shared.createMockSession(fromJsonFile: file, andStatusCode: code, andError: error, as: NetworkingSearchAPI.self)
         let service = NetworkingSearchService(router)

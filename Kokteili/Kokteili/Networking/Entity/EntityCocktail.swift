@@ -16,6 +16,7 @@ struct EntityCocktail: Codable {
     let strIBA: String?
     let strAlcoholic: String
     let strGlass: String
+    let strInstructions: String
     let strIngredient1: String?
     let strIngredient2: String?
     let strIngredient3: String?
